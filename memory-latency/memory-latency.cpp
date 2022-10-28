@@ -72,17 +72,20 @@ static void memory_latency_list(benchmark::State &state) {
 BENCHMARK(memory_latency_list)
     ->ArgName("size KB")
     // Overview
-    ->RangeMultiplier(2)
-    ->Range(1, 2048)
+    // ->RangeMultiplier(2)
+    // ->Range(1, 2048)
     // Custom point for 3 MB L3 caches
     // ->Arg(3072)
-    ->Range(4096, 16384)
+    // ->Range(4096, 16384)
     // L1 Cache
     ->DenseRange(1, 8, 1)
+    ->DenseRange(12, 32, 4)
     // L2 Cache
     ->DenseRange(48, 160, 16)
+    ->DenseRange(192, 448, 64)
     // L3 Cache
     ->DenseRange(512, 4096, 512)
+    ->DenseRange(6144, 20480, 2048)
     ;
 
 BENCHMARK_MAIN();
